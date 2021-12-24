@@ -4,8 +4,9 @@ import postMessage from "../models/postMessage.js";
 export const getPosts = async (req, res) => {
     try {
         const postMessages = await postMessage.find();
-        console.log(postMessages);
+        // console.log(postMessages);
         res.status(200).json(postMessages);
+        // res.status(200).json({message: "err.message"});
 
     
     } catch (err) {
@@ -19,9 +20,9 @@ export const createPost = async (req, res) => {
     const newPost = new postMessage(post);
     try {
         await newPost.save();
-        res.status(201).josn(newPost);
+        res.status(201).json(newPost);
 
     } catch (err) {
-        res.status(409).josn({message: err.message});
+        res.status(409).json({message: err.message});
     }
 }
